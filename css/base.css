@@ -1,0 +1,225 @@
+/* ============================================================
+   ডিজাইন টোকেন — "সন্ধ্যা" থিম
+   গভীর ইন্ডিগো রাত + মারিগোল্ড/হলুদ উষ্ণতা + গোলাপি ম্যাচ-অ্যাকসেন্ট
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* রঙ */
+  --bg-night: #1B1030;
+  --bg-surface: #241735;
+  --bg-surface-2: #2E1F45;
+  --gold: #F2A65A;
+  --gold-soft: #F6C98A;
+  --rose: #E85D75;
+  --rose-soft: #F2899C;
+  --text-warm: #F5EDE4;
+  --text-muted: #B8A9C9;
+  --text-faint: #7C6B92;
+  --line: rgba(245, 237, 228, 0.1);
+  --success: #6FCF97;
+  --danger: #E85D75;
+
+  /* টাইপ */
+  --font-display: 'Fraunces', 'Noto Sans Bengali', serif;
+  --font-body: 'Manrope', 'Noto Sans Bengali', sans-serif;
+
+  /* লেআউট */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 999px;
+  --shadow-card: 0 20px 60px -20px rgba(0, 0, 0, 0.6);
+  --max-width: 480px;
+
+  /* মোশন */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--bg-night);
+  color: var(--text-warm);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior-y: none;
+}
+
+body {
+  background-image:
+    radial-gradient(60% 40% at 50% 0%, rgba(242, 166, 90, 0.10), transparent 60%),
+    radial-gradient(50% 30% at 90% 100%, rgba(232, 93, 117, 0.08), transparent 60%);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  margin: 0;
+  color: var(--text-warm);
+  letter-spacing: -0.01em;
+}
+
+p { margin: 0; color: var(--text-muted); line-height: 1.5; }
+
+a { color: inherit; text-decoration: none; }
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+input, textarea, select {
+  font-family: var(--font-body);
+  color: var(--text-warm);
+  background: var(--bg-surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  font-size: 15px;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s var(--ease);
+}
+input:focus, textarea:focus, select:focus {
+  border-color: var(--gold);
+}
+input::placeholder, textarea::placeholder { color: var(--text-faint); }
+
+/* বাটন */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 22px;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: 15px;
+  transition: transform 0.15s var(--ease), opacity 0.15s var(--ease), box-shadow 0.2s var(--ease);
+}
+.btn:active { transform: scale(0.97); }
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+  color: #241735;
+  box-shadow: 0 10px 30px -10px rgba(242, 166, 90, 0.5);
+}
+.btn-primary:hover { box-shadow: 0 14px 34px -8px rgba(242, 166, 90, 0.65); }
+.btn-ghost {
+  background: var(--bg-surface-2);
+  color: var(--text-warm);
+  border: 1px solid var(--line);
+}
+.btn-block { width: 100%; }
+.btn-icon {
+  width: 56px; height: 56px; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 22px;
+}
+
+/* অ্যাপ শেল */
+#app {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.view {
+  flex: 1;
+  display: none;
+  flex-direction: column;
+  animation: fadeUp 0.35s var(--ease);
+}
+.view.active { display: flex; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.screen-pad { padding: 20px; }
+
+/* নিচের ট্যাব-বার */
+.tabbar {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 8px calc(10px + env(safe-area-inset-bottom));
+  background: rgba(27, 16, 48, 0.85);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid var(--line);
+}
+.tab-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--text-faint);
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  transition: color 0.2s var(--ease);
+}
+.tab-btn svg { width: 22px; height: 22px; stroke: currentColor; }
+.tab-btn.active { color: var(--gold); }
+
+/* টপ-বার */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px 8px;
+}
+.topbar h2 { font-size: 22px; }
+
+/* লোডার */
+.loader {
+  width: 28px; height: 28px;
+  border: 3px solid var(--line);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 40px auto;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* টোস্ট */
+#toast-root {
+  position: fixed;
+  top: calc(14px + env(safe-area-inset-top));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: min(92%, var(--max-width) - 24px);
+}
+.toast {
+  background: var(--bg-surface-2);
+  border: 1px solid var(--line);
+  color: var(--text-warm);
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  box-shadow: var(--shadow-card);
+  animation: fadeUp 0.25s var(--ease);
+}
+.toast.error { border-color: var(--danger); }
+.toast.success { border-color: var(--success); }
+
+.hidden { display: none !important; }
+.text-center { text-align: center; }
+.mt-8 { margin-top: 8px; }
+.mt-16 { margin-top: 16px; }
+.mt-24 { margin-top: 24px; }

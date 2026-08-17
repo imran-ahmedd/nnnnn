@@ -1,0 +1,103 @@
+#view-call {
+  position: fixed; inset: 0;
+  z-index: 300;
+  background: #0D0817;
+  max-width: none;
+  padding: 0;
+}
+#view-call.active { display: flex; }
+
+.call-remote {
+  position: absolute; inset: 0;
+  background: #000;
+}
+.call-remote video {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+
+.call-waiting {
+  position: absolute; inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  color: var(--text-warm);
+}
+.call-waiting img {
+  width: 110px; height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--gold);
+}
+.call-waiting .status { color: var(--text-muted); font-size: 14px; }
+.call-waiting .pulse {
+  width: 110px; height: 110px;
+  border-radius: 50%;
+  position: absolute;
+  border: 2px solid var(--gold);
+  animation: pulseRing 1.8s ease-out infinite;
+}
+@keyframes pulseRing {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+.call-local {
+  position: absolute;
+  top: calc(20px + env(safe-area-inset-top));
+  right: 16px;
+  width: 96px; height: 128px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 2px solid var(--line);
+  background: var(--bg-surface-2);
+  z-index: 2;
+}
+.call-local video {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1);
+}
+
+.call-topbar {
+  position: absolute;
+  top: calc(20px + env(safe-area-inset-top));
+  left: 16px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(13, 8, 23, 0.55);
+  backdrop-filter: blur(10px);
+  padding: 8px 14px 8px 8px;
+  border-radius: var(--radius-full);
+}
+.call-topbar img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+.call-topbar .name { font-size: 13px; font-weight: 700; }
+.call-topbar .timer { font-size: 11px; color: var(--text-muted); }
+
+.call-controls {
+  position: absolute;
+  bottom: calc(28px + env(safe-area-inset-bottom));
+  left: 0; right: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
+.call-controls .btn-icon {
+  background: rgba(46, 31, 69, 0.85);
+  backdrop-filter: blur(10px);
+  color: var(--text-warm);
+  border: 1px solid var(--line);
+}
+.call-controls .btn-icon.active-off { background: var(--text-warm); color: var(--bg-night); }
+.call-controls .btn-icon.end-call {
+  background: var(--danger);
+  color: #fff;
+  width: 64px; height: 64px;
+  font-size: 24px;
+}

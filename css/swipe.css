@@ -1,0 +1,139 @@
+#view-home { padding-bottom: 0; }
+
+.deck {
+  position: relative;
+  flex: 1;
+  padding: 12px 16px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.swipe-card {
+  position: absolute;
+  width: calc(100% - 32px);
+  max-width: 400px;
+  aspect-ratio: 3/4.3;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-card);
+  touch-action: pan-y;
+  will-change: transform;
+  transition: transform 0.35s var(--ease), opacity 0.35s var(--ease);
+}
+.swipe-card img {
+  width: 100%; height: 100%; object-fit: cover;
+  position: absolute; inset: 0;
+}
+.swipe-card .scrim {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(20, 10, 30, 0.92) 0%, rgba(20,10,30,0.25) 45%, transparent 70%);
+}
+.swipe-card .info {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 22px 20px;
+  color: var(--text-warm);
+}
+.swipe-card .info h3 { font-size: 24px; }
+.swipe-card .info .age { font-weight: 400; color: var(--gold-soft); }
+.swipe-card .info p { color: rgba(245,237,228,0.85); font-size: 13px; margin-top: 4px; }
+.swipe-card .badge-stamp {
+  position: absolute;
+  top: 28px;
+  padding: 6px 18px;
+  border: 3px solid;
+  border-radius: 8px;
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: rotate(-18deg);
+}
+.badge-stamp.like { left: 24px; color: var(--success); border-color: var(--success); }
+.badge-stamp.pass { right: 24px; color: var(--danger); border-color: var(--danger); transform: rotate(18deg); }
+
+.swipe-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  padding: 16px 0 24px;
+}
+.swipe-actions .btn-icon.pass { background: var(--bg-surface-2); color: var(--danger); border: 1px solid var(--line); }
+.swipe-actions .btn-icon.like { background: linear-gradient(135deg, var(--gold-soft), var(--gold)); color: #241735; width: 66px; height: 66px; font-size: 26px; }
+.swipe-actions .btn-icon.rewind { background: var(--bg-surface-2); color: var(--gold); width: 46px; height: 46px; font-size: 16px; border: 1px solid var(--line); }
+
+.deck-empty {
+  text-align: center;
+  padding: 60px 30px;
+}
+.deck-empty .mark { font-size: 44px; margin-bottom: 12px; }
+
+/* --- ম্যাচ মোমেন্ট: গাঁথা মালা মোটিফ (সিগনেচার) --- */
+.match-overlay {
+  position: fixed; inset: 0;
+  z-index: 200;
+  background: rgba(20, 10, 30, 0.94);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s var(--ease);
+}
+.match-overlay.show { opacity: 1; pointer-events: auto; }
+
+.match-overlay h1 {
+  font-size: 30px;
+  background: linear-gradient(135deg, var(--gold-soft), var(--rose-soft));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.garland {
+  position: relative;
+  width: 260px;
+  height: 90px;
+}
+.garland .avatars {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  z-index: 2;
+}
+.garland .avatars img {
+  width: 84px; height: 84px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--gold);
+  background: var(--bg-surface-2);
+}
+.garland svg {
+  position: absolute;
+  top: 14px; left: 0;
+  width: 100%; height: 60px;
+  z-index: 1;
+}
+.garland .thread {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 2;
+  stroke-dasharray: 240;
+  stroke-dashoffset: 240;
+  animation: threadIn 0.9s var(--ease) 0.15s forwards;
+}
+.garland .bud {
+  opacity: 0;
+  animation: budIn 0.4s var(--ease) forwards;
+}
+@keyframes threadIn { to { stroke-dashoffset: 0; } }
+@keyframes budIn { to { opacity: 1; } }
+
+.match-actions { display: flex; gap: 12px; margin-top: 6px; }

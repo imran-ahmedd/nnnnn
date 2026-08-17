@@ -1,0 +1,118 @@
+/* --- অনবোর্ডিং / প্রোফাইল সেটআপ --- */
+.progress-dots {
+  display: flex;
+  gap: 6px;
+  padding: 20px 20px 0;
+}
+.progress-dots span {
+  height: 4px;
+  flex: 1;
+  border-radius: var(--radius-full);
+  background: var(--line);
+  overflow: hidden;
+}
+.progress-dots span.done, .progress-dots span.active {
+  background: var(--gold);
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.photo-slot {
+  aspect-ratio: 3/4;
+  border-radius: var(--radius-md);
+  border: 1.5px dashed var(--line);
+  background: var(--bg-surface-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  font-size: 22px;
+  color: var(--text-faint);
+}
+.photo-slot img {
+  width: 100%; height: 100%; object-fit: cover;
+  position: absolute; inset: 0;
+}
+.photo-slot.main::after {
+  content: 'মূল';
+  position: absolute;
+  top: 6px; left: 6px;
+  background: var(--gold);
+  color: #241735;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+.photo-slot input[type=file] {
+  position: absolute; inset: 0; opacity: 0; cursor: pointer;
+}
+
+.chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chip {
+  padding: 9px 16px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--line);
+  background: var(--bg-surface-2);
+  font-size: 13px;
+  color: var(--text-muted);
+  transition: all 0.15s var(--ease);
+}
+.chip.selected {
+  background: var(--gold);
+  color: #241735;
+  border-color: var(--gold);
+  font-weight: 700;
+}
+
+.field-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* --- নিজের প্রোফাইল ভিউ --- */
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 20px 10px;
+  text-align: center;
+}
+.avatar-lg {
+  width: 96px; height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--gold);
+  margin-bottom: 12px;
+  background: var(--bg-surface-2);
+}
+.profile-header h2 { font-size: 22px; }
+.profile-header .sub { font-size: 13px; margin-top: 4px; }
+
+.settings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 20px;
+  padding: 0 20px;
+}
+.settings-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 4px;
+  border-bottom: 1px solid var(--line);
+  font-size: 15px;
+}
+.settings-item .danger { color: var(--danger); }
