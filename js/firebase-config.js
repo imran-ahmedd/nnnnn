@@ -20,13 +20,13 @@ import { getMessaging, isSupported as messagingSupported } from "https://www.gst
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDU2yT6V6d6HPGsYj9e21ybKYEce3ne5VM",
-  authDomain: "just-trying1.firebaseapp.com",
-  projectId: "just-trying1",
-  storageBucket: "just-trying1.firebasestorage.app",
-  messagingSenderId: "669327838181",
-  appId: "1:669327838181:web:87c423bc6bcdf578bdbd0c",
-  measurementId: "G-62T19J3ZNP"
+  apiKey: "AIzaSyDdVsM_cb0XVbBvbjxPm0qUretFhTYrfbc",
+  authDomain: "imran-bro.firebaseapp.com",
+  projectId: "imran-bro",
+  storageBucket: "imran-bro.firebasestorage.app",
+  messagingSenderId: "758518374174",
+  appId: "1:758518374174:web:7897a2cc524a879ddc730f",
+  measurementId: "G-WF68D7S3QG"
 };
 
 export const app = initializeApp(firebaseConfig);
