@@ -1,0 +1,17 @@
+{
+  "name": "সাথী — নতুন মানুষ, নতুন গল্প",
+  "short_name": "সাথী",
+  "description": "প্রোফাইল, ম্যাচ, চ্যাট আর ভিডিও কল — সব একসাথে।",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#1B1030",
+  "theme_color": "#1B1030",
+  "lang": "bn",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
