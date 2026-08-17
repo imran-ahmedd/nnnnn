@@ -27,9 +27,22 @@ export function onAuthReady(cb) { listeners.push(cb); }
 onAuthStateChanged(auth, async (user) => {
   currentUser = user;
   if (user) {
-    const ref = doc(db, "users", user.uid);
-    const snap = await getDoc(ref);
-    currentUserDoc = snap.exists() ? snap.data() : null;
+    try {
+      const ref = doc(db, "users", user.uid);
+      const snap = await getDoc(ref);
+      currentUserDoc = snap.exists() ? snap.data() : null;
+    } catch (err) {
+      // Firestore rules না বসালে (permission-denied) এখানে থেমে যেত এবং
+      // পুরো অ্যাপ silently আটকে থাকত — তাই ধরে ফেলে toast দেখানো হচ্ছে।
+      console.error("ইউজার ডেটা আনতে সমস্যা:", err);
+      currentUserDoc = null;
+      showToast(
+        err.code === "permission-denied"
+          ? "Firestore Security Rules সেট করা নেই — README দেখুন।"
+          : "প্রোফাইল ডেটা লোড করতে সমস্যা হয়েছে।",
+        "error"
+      );
+    }
   } else {
     currentUserDoc = null;
   }
@@ -88,6 +101,7 @@ export function friendlyAuthError(err) {
     "auth/wrong-password": "পাসওয়ার্ড সঠিক নয়।",
     "auth/invalid-credential": "ইমেইল বা পাসওয়ার্ড সঠিক নয়।",
     "auth/too-many-requests": "অনেকবার চেষ্টা হয়েছে। কিছুক্ষণ পর আবার চেষ্টা করুন।",
+    "permission-denied": "Firestore Security Rules সেট করা নেই বা ভুল আছে — README-এর Rules অংশ দেখুন।",
   };
   return map[err.code] || "কিছু একটা সমস্যা হয়েছে। আবার চেষ্টা করুন।";
 }
