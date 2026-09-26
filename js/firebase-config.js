@@ -18,14 +18,15 @@ import {
 import { getStorage } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-storage.js";
 import { getMessaging, isSupported as messagingSupported } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-messaging.js";
 
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDdVsM_cb0XVbBvbjxPm0qUretFhTYrfbc",
-  authDomain: "imran-bro.firebaseapp.com",
-  projectId: "imran-bro",
-  storageBucket: "imran-bro.firebasestorage.app",
-  messagingSenderId: "758518374174",
-  appId: "1:758518374174:web:7897a2cc524a879ddc730f",
-  measurementId: "G-WF68D7S3QG",
+  apiKey: "AIzaSyCJyClYm7m4IFSJtuyjvNHhY4iHnCXJhKQ",
+  authDomain: "tvexam.firebaseapp.com",
+  projectId: "tvexam",
+  storageBucket: "tvexam.firebasestorage.app",
+  messagingSenderId: "568880836905",
+  appId: "1:568880836905:web:3bac39c8d6c113c6d3c738",
+  measurementId: "G-JZY90RTTE0"
 };
 
 export const app = initializeApp(firebaseConfig);
